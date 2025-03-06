@@ -1,22 +1,12 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
+import java.util.ArrayList;//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
 public class Main {
 
     // Static list of users, acting as a database
     private static ArrayList<User> users = new ArrayList<>();
 
-    // Mock authentication service that always returns the first user when log in, and does nothing when sign up
-    private static IAuthenticationService authService = new IAuthenticationService() {
-        @Override
-        public User signUp(String username, String password) {
-            return null;
-        }
-
-        @Override
-        public User logIn(String username, String password) {
-            return users.get(0);
-        }
-    };
+    private static IAuthenticationService authService;
 
     private static boolean isRunning = true;
 
@@ -26,6 +16,8 @@ public class Main {
      */
     public static void main(String[] args) {
         users.add(new User("test", "test"));
+
+        authService = new AuthenticationService(users);
         while (isRunning) {
             showMenu();
         }
