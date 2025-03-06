@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class User {
     private String username;
     private String password;
@@ -5,6 +7,7 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.toDoItems = new ArrayList<>();
     }
 
     /**
@@ -35,4 +38,17 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    /**
+     * Appendments for To-do-list
+     */
+
+    private ArrayList<ToDoItem> toDoItems;
+
+
+    // Get to do items of the user
+    public ArrayList<ToDoItem> getToDoItems() {
+        return toDoItems;
+    }
+
 }
